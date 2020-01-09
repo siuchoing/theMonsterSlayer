@@ -42,6 +42,10 @@ new Vue({
             } else {
                 this.playerHealth = 100;
             }
+            this.turns.unshift({ // unshift(): adds one or more elements to the beginning of an array
+                isPlayer: true,
+                text: 'Player heals for 10'
+            });
             this.monsterAttack();
         },
         giveUp() {
