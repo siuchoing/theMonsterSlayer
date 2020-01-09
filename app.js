@@ -17,7 +17,16 @@ new Vue({
             if (this.checkWin()) {
                 return; // end of function
             }
-
+            this.monsterAttack();
+        },
+        specialAttack() {
+            this.monsterHealth -= this.calculateDamage(10, 20);
+            if (this.checkWin()) {
+                return; // end of function
+            }
+            this.monsterAttack();
+        },
+        monsterAttack() {
             this.playerHealth -= this.calculateDamage(5, 12);
             this.checkWin();
         },
