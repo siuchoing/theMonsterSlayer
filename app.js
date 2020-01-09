@@ -4,7 +4,7 @@ new Vue({
         playerHealth: 100,
         monsterHealth: 100,
         gameIsRunning: false,
-
+        turns: [], // store the separate turns of the game, and then log them to this page
     },
     methods: {
         startGame() {
@@ -16,6 +16,9 @@ new Vue({
             var demage = this.calculateDamage(3, 10);
             this.monsterHealth -= demage;
             this.turns.unshift({ // unshift(): adds one or more elements to the beginning of an array
+                isPlayer: true,
+                text: 'Player hits Monster for ' + demage
+            });
             if (this.checkWin()) {
                 return; // end of function
             }
@@ -43,6 +46,10 @@ new Vue({
             var demage = this.calculateDamage(5, 12);
             this.playerHealth -= demage;
             this.checkWin();
+            this.turns.unshift({ // unshift(): adds one or more elements to the beginning of an array
+                isPlayer: false,
+                text: 'Monster hits Player for ' + demage
+            });
         },
         calculateDamage(min, max) {
             return Math.max(Math.floor(Math.random() * max) + 1, min);
