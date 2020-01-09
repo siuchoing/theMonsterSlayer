@@ -13,7 +13,9 @@ new Vue({
             this.monsterHealth = 100;
         },
         attack() {
-            this.monsterHealth -= this.calculateDamage(3, 10);
+            var demage = this.calculateDamage(3, 10);
+            this.monsterHealth -= demage;
+            this.turns.unshift({ // unshift(): adds one or more elements to the beginning of an array
             if (this.checkWin()) {
                 return; // end of function
             }
@@ -38,7 +40,8 @@ new Vue({
             this.gameIsRunning = false;
         },
         monsterAttack() {
-            this.playerHealth -= this.calculateDamage(5, 12);
+            var demage = this.calculateDamage(5, 12);
+            this.playerHealth -= demage;
             this.checkWin();
         },
         calculateDamage(min, max) {
