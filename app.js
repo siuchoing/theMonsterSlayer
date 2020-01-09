@@ -25,7 +25,12 @@ new Vue({
             this.monsterAttack();
         },
         specialAttack() {
-            this.monsterHealth -= this.calculateDamage(10, 20);
+            var demage = this.calculateDamage(10, 20);
+            this.monsterHealth -= demage;
+            this.turns.unshift({ // unshift(): adds one or more elements to the beginning of an array
+                isPlayer: true,
+                text: 'Player hits Monster hard for ' + demage
+            });
             if (this.checkWin()) {
                 return; // end of function
             }
