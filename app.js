@@ -26,6 +26,14 @@ new Vue({
             }
             this.monsterAttack();
         },
+        heal() {
+            if (this.playerHealth <= 90) {
+                this.playerHealth += 10;
+            } else {
+                this.playerHealth = 100;
+            }
+            this.monsterAttack();
+        },
         monsterAttack() {
             this.playerHealth -= this.calculateDamage(5, 12);
             this.checkWin();
